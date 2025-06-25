@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -57,12 +58,10 @@
             
             <a href="AssiaBoudjraf_Cv.pdf" class="btn" download>Télécharger CV</a>
         </div>
-
     </section>
 
     <!-- SECTION À PROPOS -->
-    
-
+    <section class="about" id="about">
         <div class="about-content">
             <h2 class="heading">À propos de <span>Moi</span></h2>
             <h3>Étudiante en sciences des données</h3>
@@ -150,60 +149,55 @@
 
     <!-- SECTION PROJETS -->
     <section class="portfolio" id="projets">
-        <h2 class="heading">Projets <span>Universitaires</span></h2>
+        <h2 class="heading">Projets</h2>
 
         <div class="portfolio-container">
+            <!-- Projet IA -->
             <div class="portfolio-box">
                 <img src="ia.jpg" alt="Projet sur l'Intelligence Artificielle">
                 <div class="portfolio-layer">
                     <h4>Enquête sur l'IA</h4>
                     <p>Questionnaire sur l'intégration de l'IA dans l'enseignement.</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
+                    <div class="project-buttons">
+                        <a href="SAE-ia.pdf" class="btn-project" target="_blank">
+                        </a>
+                        
+                    
+                    </div>
                 </div>
             </div>
 
-            <div class="portfolio-box">
-                <img src="courbe.jpg" alt="Projet de visualisation de données">
-                <div class="portfolio-layer">
-                    <h4>Concours Dataviz</h4>
-                    <p>Gestion de bases de données et création de dashboards PowerBI</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
-                </div>
-            </div>
 
-            <div class="portfolio-box">
-                <img src="cinema.jpg" alt="Projet de structuration de données cinéma">
-                <div class="portfolio-layer">
-                    <h4>Structuration de données film</h4>
-                    <p>Transformation de données textuelles en CSV sur Python.</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
-                </div>
-            </div>
 
-            <div class="portfolio-box">
-                <img src="commerce.jpg" alt="Projet d'analyse commerciale">
-                <div class="portfolio-layer">
-                    <h4>Conseil pour l'implémentation d'un commerce</h4>
-                    <p>Extraction des données en SQL, analyse statistique sur Excel</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
-                </div>
-            </div>
+            
 
+            <!-- Projet APUR -->
             <div class="portfolio-box">
                 <img src="apur.jpg" alt="Projet de digitalisation des commerces parisiens">
                 <div class="portfolio-layer">
                     <h4>Digitalisation des commerces parisiens</h4>
                     <p>Ajout de données (site web, livraison, GPS) dans BCOM2023 via Python.</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
+                    <div class="project-buttons">
+                        <a href="SAE-commerces.pdf" class="btn-project" target="_blank">
+                        </a>
+                        
+                    </div>
                 </div>
             </div>
 
+            
+
+            <!-- Nouveau Projet Alternance/Staging -->
             <div class="portfolio-box">
-                <img src="medical.jpg" alt="Projet d'analyse d'efficacité médicale">
+                <img src="sas_staging.jpg" alt="Projet Staging SAS">
                 <div class="portfolio-layer">
-                    <h4>Efficacité d'une sonde médicale</h4>
-                    <p>Nettoyage des données sur RStudio, rédaction du rapport et gestion de projet.</p>
-                    <a href="#" class="portfolio-link"><i class="fa-solid fa-external-link-alt"></i></a>
+                    <h4>Projet Staging - SAS Institute</h4>
+                    <p>Développement d'un outil de staging pour l'amélioration de la qualité des données CRM.</p>
+                    <div class="project-buttons">
+                        <a href="SAS.pdf" class="btn-project" target="_blank">
+                        </a>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -213,7 +207,7 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contactez <span>Moi !</span></h2>
 
-        <form action="#" method="POST" class="contact-form">
+        <form action="https://formspree.io/f/xpwajvzr" method="POST" class="contact-form">
             <div class="input-group">
                 <div class="input-box">
                     <input type="text" name="fullname" placeholder="Nom complet" required>
@@ -226,8 +220,19 @@
             </div>
             
             <textarea name="message" cols="30" rows="10" placeholder="Votre Message" required></textarea>
+            
+            <!-- Champs cachés pour Formspree -->
+            <input type="hidden" name="_next" value="https://votre-site.com/merci.html">
+            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+            <input type="hidden" name="_cc" value="a.boudjraf@outlook.fr">
+            
             <input type="submit" value="Envoyer le Message" class="btn">
         </form>
+
+        <!-- Message de confirmation (caché par défaut) -->
+        <div id="success-message" style="display: none; margin-top: 20px; padding: 15px; background-color: #4CAF50; color: white; border-radius: 5px;">
+            <p>Merci ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.</p>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -252,5 +257,26 @@
     
     <!-- Custom JavaScript -->
     <script src="main.js"></script>
+    
+    <!-- Script pour le formulaire de contact -->
+    <script>
+        // Gestion du formulaire de contact
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Laisser Formspree gérer l'envoi
+            setTimeout(function() {
+                // Afficher le message de succès après 2 secondes
+                const successMessage = document.getElementById('success-message');
+                successMessage.style.display = 'block';
+                
+                // Réinitialiser le formulaire
+                document.querySelector('.contact-form').reset();
+                
+                // Cacher le message après 5 secondes
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
